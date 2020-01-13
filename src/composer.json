@@ -1,0 +1,13 @@
+{
+    "name": "divpro/sandbox",
+    "description": "Codeigniter3 demo app",
+    "type": "project",
+    "require": {
+        "codeigniter/framework": "^3.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5"
+    },
+    "license": "MIT",
+    "minimum-stability": "stable"
+}
