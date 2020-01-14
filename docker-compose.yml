@@ -5,7 +5,7 @@ services:
     build:
       ./php
     ports:
-      - 8080:80
+      - 80:80
     volumes:
       - ./src:/var/www/html
       - ./php/php.ini:/usr/local/etc/php/php.ini
@@ -18,6 +18,8 @@ services:
       - ./mariadb:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: qwerty
+    ports:
+      - "8083:3306"
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
