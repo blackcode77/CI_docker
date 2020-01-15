@@ -9,6 +9,6 @@ RUN apt-get install -y \
 
 #PECL Ext
 RUN pecl install redis-5.1.1 \
-    && pecl install xdebug-2.8.1 \
+    && pecl install xdebug-2.7.1 \
     && docker-php-ext-enable redis xdebug
 RUN a2enmod rewrite

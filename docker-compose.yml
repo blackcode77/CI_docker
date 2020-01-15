@@ -9,6 +9,11 @@ services:
     volumes:
       - ./src:/var/www/html
       - ./php/php.ini:/usr/local/etc/php/php.ini
+    environment:
+      XDEBUG_CONFIG: "remote_host=192.168.220.1 remote_enable=1 remote_autostart=off  remote_port=9000"
+      PHP_IDE_CONFIG: "serverName=Docker"
+    networks:
+      - internal
     depends_on:
       - mariadb
 
@@ -20,6 +25,8 @@ services:
       MYSQL_ROOT_PASSWORD: qwerty
     ports:
       - "8083:3306"
+    networks:
+      - internal
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -29,5 +36,14 @@ services:
       - 8765:80
     environment:
       MYSQL_ROOT_PASSWORD: qwerty
+    networks:
+      - internal
     depends_on:
       - mariadb
+networks:
+  internal:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.220.0/28
